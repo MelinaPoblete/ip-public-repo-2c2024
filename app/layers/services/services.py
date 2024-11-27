@@ -9,14 +9,13 @@ from ..utilities import translator
 def getAllImages(input=None):
     # obtiene un listado de datos "crudos" desde la API, usando a transport.py.
     json_collection = []
-    json_collection= transport.getAllImages(input)
-
+    json_collection = transport.getAllImages(input)
     # recorre cada dato crudo de la colección anterior, lo convierte en una Card y lo agrega a images.
     images = []
     for imagenes in json_collection:
         images.append(translator.fromRequestIntoCard(imagenes))
     return images
-
+ 
 # añadir favoritos (usado desde el template 'home.html')
 def saveFavourite(request):
     fav = '' # transformamos un request del template en una Card.
