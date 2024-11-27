@@ -13,7 +13,7 @@ def index_page(request):
 def home(request):
     images = []
     favourite_list = []
-
+ 
     return render(request, 'home.html', { 'images': images, 'favourite_list': favourite_list })
 
 def search(request):

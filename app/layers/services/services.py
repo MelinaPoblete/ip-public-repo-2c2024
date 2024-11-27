@@ -7,11 +7,27 @@ from django.contrib.auth import get_user
 def getAllImages(input=None):
     # obtiene un listado de datos "crudos" desde la API, usando a transport.py.
     json_collection = []
+    if input:
+        for personaje in personajes:
+            if input.lower() in personaje ["nombre"].lower() or input.lower() in personaje["especie"].lower():
+                card= {
+                    "titulo": personaje["nombre"],
+                    "imagen": personaje["imagen"]
+                }
+                json_collection.append(card)
+    else:  
+        for personaje in personajes:
+            card= {
+                "titulo": personaje["nombre"],
+                "imagen": personaje["imagen"]
+            }
+            json_collection.append(card)
+    return json_collection
 
     # recorre cada dato crudo de la colección anterior, lo convierte en una Card y lo agrega a images.
-    images = []
+   # images = []
 
-    return images
+    #return images
 
 # añadir favoritos (usado desde el template 'home.html')
 def saveFavourite(request):
